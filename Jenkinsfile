@@ -29,7 +29,7 @@ pipeline{
                    steps{
 
 
-                        catchError(message: 'O estagio falhou', stageResult: 'NOT_BUILT') {
+                        catchError(message: 'O estagio falhou', stageResult: 'FAILURE') {
                             script{
                                                    
                                 sh "natan"
