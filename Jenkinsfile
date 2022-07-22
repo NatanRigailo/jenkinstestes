@@ -27,10 +27,14 @@ pipeline{
                 stage("Buildfalha")
                    {               
                    steps{
-                       script{
+
+
+                        catchError(message: 'O estagio falhou', stageResult: 'UNSTABLE') {
+                            script{
                                                    
-                           sh "natan"    
-                       }
+                                sh "natan"
+                            }
+                        }
                    }
                 }
                 stage("sucesso")
