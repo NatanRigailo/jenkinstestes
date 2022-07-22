@@ -1,7 +1,16 @@
 pipeline{
 
     agent {label 'master'}
-
+    parameters {
+        choice(
+            choices: ['nao' , 'sim'],
+            description: '',
+            name: 'ESTAGIO1')
+        choice(
+            choices: ['nao' , 'sim'],
+            description: '',
+            name: 'ESTAGIO2')
+    }
     triggers{
 
         pollSCM '* * * * *'
@@ -23,7 +32,8 @@ pipeline{
 
         stage('Verificando Alterações'){
             when{
-                changeset "alteracoes"
+                anyOf {changeset "alteracoes"; triggeredBy 'UserIdCause'}
+                
             }
             
             stages {
@@ -39,11 +49,7 @@ pipeline{
                             }
                         }
                    }
-                   retryBuild {
-                        rerunIfUnstable()
-                        retryLimit(3)
-                        progressiveDelay(60, 600)
-                    }
+                   
                 }
                 stage("sucesso")
                    {               
