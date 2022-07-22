@@ -31,14 +31,14 @@ pipeline{
     stages{
 
         stage('Verificando Alterações'){
-            when{
-                anyOf {changeset "alteracoes"; triggeredBy 'UserIdCause'}
-                
-            }
-            
+                        
             stages {
                 stage("Buildfalha")
-                   {               
+                   {
+                    when{
+                        anyOf {environment name: 'ESTAGIO1', value: 'sim';changeset "estagio1"}
+                
+                    }
                    steps{
                         
 
@@ -52,7 +52,11 @@ pipeline{
                    
                 }
                 stage("sucesso")
-                   {               
+                   {
+                   when{
+                        anyOf {environment name: 'ESTAGIO2', value: 'sim';changeset "estagio2"}
+                
+                   }
                    steps{
                        script{
                             sh "ls -lah"    
