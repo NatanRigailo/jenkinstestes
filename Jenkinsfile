@@ -51,7 +51,12 @@ pipeline{
                 
                 
             }
-            post { 
+            post {
+                retryBuild {
+                    rerunIfUnstable()
+                    retryLimit(3)
+                     progressiveDelay(60, 600)
+                }
                 always { 
                     cleanWs()
                 }
