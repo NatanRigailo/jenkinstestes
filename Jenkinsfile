@@ -30,7 +30,7 @@ pipeline{
                 stage("Buildfalha")
                    {               
                    steps{
-
+                        
 
                         catchError(message: 'O estagio falhou', stageResult: 'FAILURE') {
                             script{
@@ -39,6 +39,11 @@ pipeline{
                             }
                         }
                    }
+                   retryBuild {
+                        rerunIfUnstable()
+                        retryLimit(3)
+                        progressiveDelay(60, 600)
+                    }
                 }
                 stage("sucesso")
                    {               
@@ -54,11 +59,7 @@ pipeline{
             post {
                 
                 always {
-                    retryBuild {
-                        rerunIfUnstable()
-                        retryLimit(3)
-                        progressiveDelay(60, 600)
-                    }
+                    
                     cleanWs()
                     
                 }
