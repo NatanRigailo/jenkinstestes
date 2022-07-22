@@ -69,7 +69,8 @@ pipeline{
             post {
                 
                 always {
-                    
+                    discordSend description: "Jenkins Pipeline Build", footer: "Footer Text", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "https://discord.com/api/webhooks/961017653982543882/ynHLG0lBxEcMuaWOfegV10XG_N89mpwcm4Lx-6y3jIcY_3fQnjMn_U4NMT5crgjE_2fu"
+
                     cleanWs()
                     
                 }
