@@ -22,6 +22,9 @@ pipeline{
     stages{
 
         stage('Verificando Alterações'){
+            when{
+                changeset "alteracoes"
+            }
             
             stages {
                 stage("Buildfalha")
