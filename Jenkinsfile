@@ -62,7 +62,7 @@ pipeline{
                        script{
                             sh "ls -lah"
                             sh "echo $DB_URL"
-                            sh "dig @resolver4.opendns.com myip.opendns.com +short"
+                            sh "hostname"
                             
                        }
                    }
