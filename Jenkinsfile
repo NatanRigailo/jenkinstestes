@@ -58,10 +58,10 @@ pipeline{
                 
                    }
                    steps{
-                       load "./.env.groovy"
+                       load "/envs/outroenv.groovy"
                        script{
                             sh "ls -lah"
-                            sh "echo $DB_URL"
+                            sh "echo $OUTROENV"
                             sh "hostname"
                             
                        }
