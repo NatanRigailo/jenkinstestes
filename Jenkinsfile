@@ -21,13 +21,7 @@ pipeline{
        // )
     }
 
-    environment {
     
-    // ================================================================================
-         APPPOOLFINCONTROLELOJAS = "PLSS-Fin_controlelojas"
-        
-
-    }
     stages{
 
         stage('Verificando Alterações'){
@@ -61,7 +55,7 @@ pipeline{
                        load "/envs/outroenv.groovy"
                        script{
                             sh "ls -lah"
-                            sh "echo $OUTROENV"
+                            sh "echo $APPPOOLFINCONTROLELOJAS"
                             sh "hostname"
                             
                        }
