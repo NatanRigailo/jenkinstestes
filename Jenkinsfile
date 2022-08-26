@@ -58,9 +58,10 @@ pipeline{
                 
                    }
                    steps{
+                       load "./.env.groovy"
                        script{
                             sh "ls -lah"
-                            sh "echo $APPPOOLFINCONTROLELOJAS"
+                            sh "echo $DB_URL"
                        }
                    }
                 }   
