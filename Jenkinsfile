@@ -44,7 +44,7 @@ pipeline{
 
                         catchError(message: 'O estagio falhou', stageResult: 'FAILURE') {
                             script{
-                                                   
+                                sh "echo $APPPOOLFINCONTROLELOJAS"                
                                 sh "natan"
                             }
                         }
